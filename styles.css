@@ -1,0 +1,16 @@
+.rawWeightCalculator {
+	height: 200px;
+	left: 50%;
+	margin-left: -100px;
+	position: fixed;
+	top: 200px;
+	width: 200px;
+	z-index: 300;
+	box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+	background-color: #fff;
+	text-align: center;
+}
+
+	.rawWeightCalculator label {
+		display: block;
+	}
