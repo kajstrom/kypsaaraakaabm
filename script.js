@@ -10,6 +10,10 @@ rawWeightCalculator.template = '<div id="rawWeightCalculator">' +
 	'<div id="rawWeightCalculator-result"></div>' +
 '</div>';
 
+/**
+ * Initialize the calculator.
+ * @return {Void}
+ */
 rawWeightCalculator.init = function () {
 	var cssFile;
 
@@ -49,6 +53,13 @@ rawWeightCalculator.setToForm = function (weight) {
 	document.getElementById("maarakentta").value = weight;
 };
 
+/**
+ * Display calculator.
+ * 
+ * Also selects the form elements used throughout the bookmarklet.
+ * 
+ * @return {Void}
+ */
 rawWeightCalculator.show = function () {
 	var container;
 
@@ -74,6 +85,11 @@ rawWeightCalculator.show = function () {
 	rawWeightCalculator.attachEvents();
 };
 
+/**
+ * Handle portion calculation.
+ * @param  {Object} e Event object.
+ * @return {Void}
+ */
 rawWeightCalculator.calculatePortion = function (e) {
 	var elements = rawWeightCalculator.elements,
 		raw = elements.inputRaw.value,
@@ -86,6 +102,11 @@ rawWeightCalculator.calculatePortion = function (e) {
 	rawWeightCalculator.setToForm(rawPortion);
 };
 
+/**
+ * Handle form clearing.
+ * @param  {Object} e Event object
+ * @return {Void}
+ */
 rawWeightCalculator.clearForm = function (e) {
 	var elements = rawWeightCalculator.elements;
 
@@ -94,10 +115,19 @@ rawWeightCalculator.clearForm = function (e) {
 	elements.inputPortion.value = "";
 };
 
+/**
+ * Handle form closing.
+ * @param  {Object} e Event object
+ * @return {Void}
+ */
 rawWeightCalculator.closeForm = function (e) {
 	document.getElementById("rawWeightContainer").innerHTML = "";
 };
 
+/**
+ * Attach event listeners.
+ * @return {Void}
+ */
 rawWeightCalculator.attachEvents = function () {
 	var elements = rawWeightCalculator.elements;
 
