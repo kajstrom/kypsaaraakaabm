@@ -75,9 +75,25 @@ rawWeightCalculator.calculatePortion = function (e) {
 	rawWeightCalculator.setToForm(rawPortion);
 };
 
+rawWeightCalculator.clearForm = function (e) {
+	document.getElementById("rawWeightCalculator-raw").value = "";
+	document.getElementById("rawWeightCalculator-cooked").value = "";
+	document.getElementById("rawWeightCalculator-portion").value = "";
+};
+
+rawWeightCalculator.closeForm = function (e) {
+	document.getElementById("rawWeightContainer").innerHTML = "";
+};
+
 rawWeightCalculator.attachEvents = function () {
 	document.getElementById("rawWeightCalculator-calculate").onclick
 		= rawWeightCalculator.calculatePortion;
+
+	document.getElementById("rawWeightCalculator-clear").onclick
+		= rawWeightCalculator.clearForm;
+
+	document.getElementById("rawWeightCalculator-close").onclick
+		= rawWeightCalculator.closeForm;
 };
 
 rawWeightCalculator.init();
