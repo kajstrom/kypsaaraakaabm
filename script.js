@@ -1,6 +1,6 @@
 var rawWeightCalculator = {};
 
-rawWeightCalculator.template = '<div class="rawWeightCalculator">' +
+rawWeightCalculator.template = '<div id="rawWeightCalculator">' +
 	'<div><label for="rawWeightCalculator-raw">Raakana</label><input type="text" id="rawWeightCalculator-raw" /></div>' + 
 	'<div><label for="rawWeightCalculator-cooked">Kyps&auml;n&auml;</label><input type="text" id="rawWeightCalculator-cooked" /></div>' +
 	'<div><label for="rawWeightCalculator-portion">Annos</label><input type="text" id="rawWeightCalculator-portion" /></div>' +
@@ -61,13 +61,24 @@ rawWeightCalculator.show = function () {
 	}
 
 	container.innerHTML = rawWeightCalculator.template;
+
+	rawWeightCalculator.elements = {
+		inputRaw: container.querySelector("#rawWeightCalculator-raw"),
+		inputCooked: container.querySelector("#rawWeightCalculator-cooked"),
+		inputPortion: container.querySelector("#rawWeightCalculator-portion"),
+		buttonCalculate: container.querySelector("#rawWeightCalculator-calculate"),
+		buttonClear: container.querySelector("#rawWeightCalculator-clear"),
+		buttonClose: container.querySelector("#rawWeightCalculator-close")
+	};
+
 	rawWeightCalculator.attachEvents();
 };
 
 rawWeightCalculator.calculatePortion = function (e) {
-	var raw = document.getElementById("rawWeightCalculator-raw").value,
-		cooked = document.getElementById("rawWeightCalculator-cooked").value,
-		portion = document.getElementById("rawWeightCalculator-portion").value,
+	var elements = rawWeightCalculator.elements,
+		raw = elements.inputRaw.value,
+		cooked = elements.inputCooked.value,
+		portion = elements.inputRaw.value,
 		rawPortion = 0;
 
 	rawPortion = rawWeightCalculator.calculate(raw, cooked, portion);
@@ -76,9 +87,11 @@ rawWeightCalculator.calculatePortion = function (e) {
 };
 
 rawWeightCalculator.clearForm = function (e) {
-	document.getElementById("rawWeightCalculator-raw").value = "";
-	document.getElementById("rawWeightCalculator-cooked").value = "";
-	document.getElementById("rawWeightCalculator-portion").value = "";
+	var elements = rawWeightCalculator.elements;
+
+	elements.inputRaw.value = "";
+	elements.inputCooked.value = "";
+	elements.inputPortion.value = "";
 };
 
 rawWeightCalculator.closeForm = function (e) {
@@ -86,13 +99,15 @@ rawWeightCalculator.closeForm = function (e) {
 };
 
 rawWeightCalculator.attachEvents = function () {
-	document.getElementById("rawWeightCalculator-calculate").onclick
+	var elements = rawWeightCalculator.elements;
+
+	elements.buttonCalculate.onclick
 		= rawWeightCalculator.calculatePortion;
 
-	document.getElementById("rawWeightCalculator-clear").onclick
+	elements.buttonClear.onclick
 		= rawWeightCalculator.clearForm;
 
-	document.getElementById("rawWeightCalculator-close").onclick
+	elements.buttonClose.onclick
 		= rawWeightCalculator.closeForm;
 };
 

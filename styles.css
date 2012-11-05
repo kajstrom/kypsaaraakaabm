@@ -1,4 +1,4 @@
-.rawWeightCalculator {
+#rawWeightCalculator {
 	height: 200px;
 	left: 50%;
 	margin-left: -100px;
@@ -11,6 +11,6 @@
 	text-align: center;
 }
 
-	.rawWeightCalculator label {
+	#rawWeightCalculator label {
 		display: block;
 	}
