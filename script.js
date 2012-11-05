@@ -36,11 +36,14 @@ rawWeightCalculator.init = function () {
  * @param  {Number} rawWeight     Raw weight of the food.
  * @param  {Number} cookedWeight  Cooked/prepared weight of the food.
  * @param  {Number} portionWeight Size of the portion eaten.
- * @return {Number} Portion weight as raw ingredient.
+ * @return {Number} Portion weight as raw ingredient. This weight is ceiled up
+ * to the next integer.
  */
 rawWeightCalculator.calculate = function (rawWeight, cookedWeight, portionWeight) {
 	var cookedRawRatio = rawWeight / cookedWeight,
 		rawPortion = portionWeight * cookedRawRatio;
+
+	rawPortion = Math.ceil(rawPortion);
 
 	return rawPortion;
 };
@@ -81,7 +84,7 @@ rawWeightCalculator.show = function () {
 		buttonClear: container.querySelector("#rawWeightCalculator-clear"),
 		buttonClose: container.querySelector("#rawWeightCalculator-close")
 	};
-
+	
 	rawWeightCalculator.attachEvents();
 };
 
@@ -94,7 +97,7 @@ rawWeightCalculator.calculatePortion = function (e) {
 	var elements = rawWeightCalculator.elements,
 		raw = elements.inputRaw.value,
 		cooked = elements.inputCooked.value,
-		portion = elements.inputRaw.value,
+		portion = elements.inputPortion.value,
 		rawPortion = 0;
 
 	rawPortion = rawWeightCalculator.calculate(raw, cooked, portion);
