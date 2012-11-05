@@ -64,17 +64,20 @@ rawWeightCalculator.show = function () {
 	rawWeightCalculator.attachEvents();
 };
 
+rawWeightCalculator.calculatePortion = function (e) {
+	var raw = document.getElementById("rawWeightCalculator-raw").value,
+		cooked = document.getElementById("rawWeightCalculator-cooked").value,
+		portion = document.getElementById("rawWeightCalculator-portion").value,
+		rawPortion = 0;
+
+	rawPortion = rawWeightCalculator.calculate(raw, cooked, portion);
+
+	rawWeightCalculator.setToForm(rawPortion);
+};
+
 rawWeightCalculator.attachEvents = function () {
-	document.getElementById("rawWeightCalculator-calculate").onclick = function (e) {
-		var raw = document.getElementById("rawWeightCalculator-raw").value,
-			cooked = document.getElementById("rawWeightCalculator-cooked").value,
-			portion = document.getElementById("rawWeightCalculator-portion").value,
-			rawPortion = 0;
-
-		rawPortion = rawWeightCalculator.calculate(raw, cooked, portion);
-
-		rawWeightCalculator.setToForm(rawPortion);
-	};
+	document.getElementById("rawWeightCalculator-calculate").onclick
+		= rawWeightCalculator.calculatePortion;
 };
 
 rawWeightCalculator.init();
