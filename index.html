@@ -5,8 +5,19 @@
 </head>
 <body>
 <a href="javascript: (function() {
-	var jsCode = document.createElement('script');  
-    jsCode.setAttribute('src', 'http://hiekkalaatikko.vardan.fi/Kalorilaskuribm/script.js');  
-  document.body.appendChild(jsCode);})();">Kypsää / raakaa</a>
+	if (undefined === window.rawWeightCalculator) {
+	  var jsCode = document.createElement('script');  
+	  jsCode.setAttribute('src', 'http://hiekkalaatikko.vardan.fi/Kalorilaskuribm/script.js');  
+	  document.body.appendChild(jsCode);
+	}
+
+	var timeoutId = window.setTimeout(function () {
+		if (undefined !== window.rawWeightCalculator) {
+			window.rawWeightCalculator.show();
+			window.clearTimeout(timeoutId);
+		}
+	}, 100);
+})();
+	">Kypsää / raakaa</a>
 </body>
 </html>

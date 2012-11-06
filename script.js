@@ -145,4 +145,3 @@ rawWeightCalculator.attachEvents = function () {
 };
 
 rawWeightCalculator.init();
-rawWeightCalculator.show();
